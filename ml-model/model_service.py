@@ -104,7 +104,7 @@ def ProcessPrice(channel, method, properties, body):
                                       body = json.dumps(logging_data))
                                       
 channel_live_data.basic_consume(queue = live_data_queue_name,
-                                on_message_callback = ProcessPrice)
+                                on_message_callback = ProcessPrice
                                  auto_ack=False)
 
 logging.info("成功完成初始化，开始接收消息")
