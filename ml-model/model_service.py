@@ -103,9 +103,9 @@ def ProcessPrice(channel, method, properties, body):
                                       routing_key = "", 
                                       body = json.dumps(logging_data))
                                       
-channel_live_data.basic_consume(ProcessPrice,
-                                queue = live_data_queue_name,
-                                no_ack=True)
+channel_live_data.basic_consume(queue = live_data_queue_name,
+                                on_message_callback = ProcessPrice,
+                                auto_ack=False)
 
 logging.info("成功完成初始化，开始接收消息")
 channel_live_data.start_consuming() 
